@@ -30,7 +30,7 @@ export default function SubmissionTable({ submissions, onSelect }) {
                   {s.trust_score}
                 </span>
               </td>
-              <td className="px-5 py-4">
+              <td className="px-5 py-4 whitespace-nowrap">
                 <VerdictBadge verdict={s.verdict} />
               </td>
               <td className="px-5 py-4 text-gray-400 text-xs">

@@ -28,7 +28,7 @@ export default function EINSubmitBar({ onSubmit, loading }) {
       <button
         onClick={handleSubmit}
         disabled={loading || !ein.trim()}
-        className="px-6 py-3 rounded-lg text-sm font-semibold bg-blue-600 hover:bg-blue-500 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="px-6 py-3 rounded-lg text-sm font-semibold bg-green-600 hover:bg-green-500 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
         {loading ? 'Verifying...' : 'Verify →'}
       </button>
