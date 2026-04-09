@@ -6,33 +6,33 @@ export default function VerifiedDrawer({ submission, onClose }) {
   return (
     <div
       className="fixed inset-0 flex items-center justify-center z-50"
-      style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
+      style={{ backgroundColor: 'rgba(0,0,0,0.3)' }}
       onClick={onClose}
     >
       <div
-        className="rounded-xl border border-green-500/30 p-6 w-full max-w-lg"
-        style={{ backgroundColor: '#0f172a' }}
+        className="rounded-xl border p-6 w-full max-w-lg"
+        style={{ backgroundColor: '#ffffff', borderLeft: '3px solid #1bc5a4', borderColor: '#9de8d8' }}
         onClick={e => e.stopPropagation()}
       >
         <div className="flex justify-between items-start mb-4">
           <div>
-            <p className="text-green-400 text-xs font-semibold mb-1">✓ VERIFIED</p>
-            <h2 className="text-white font-bold text-lg">{submission.org_name}</h2>
-            <p className="text-gray-500 text-xs font-mono mt-1">EIN {submission.ein}</p>
+            <p className="text-xs font-semibold mb-1" style={{ color: '#1bc5a4' }}>✓ VERIFIED</p>
+            <h2 className="text-gray-800 font-bold text-lg">{submission.org_name}</h2>
+            <p className="text-gray-400 text-xs font-mono mt-1">EIN {submission.ein}</p>
           </div>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-white transition-colors text-xl leading-none"
+            className="text-gray-400 hover:text-gray-700 transition-colors text-xl leading-none"
           >
             ×
           </button>
         </div>
 
-        <div className="flex items-center gap-3 mb-6 p-3 rounded-lg" style={{ backgroundColor: '#1e293b' }}>
-          <span className="text-green-400 font-bold text-3xl">{submission.trust_score}</span>
+        <div className="flex items-center gap-3 mb-6 p-3 rounded-lg" style={{ backgroundColor: '#f8fafb' }}>
+          <span className="font-bold text-3xl" style={{ color: '#1bc5a4' }}>{submission.trust_score}</span>
           <div>
-            <p className="text-white text-sm font-medium">Trust Score</p>
-            <p className="text-gray-500 text-xs">out of 100</p>
+            <p className="text-gray-800 text-sm font-medium">Trust Score</p>
+            <p className="text-gray-400 text-xs">out of 100</p>
           </div>
         </div>
 
@@ -41,20 +41,20 @@ export default function VerifiedDrawer({ submission, onClose }) {
             <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3">
               IRS Lookup
             </p>
-            <div className="rounded-lg border border-white/5 overflow-hidden mb-6" style={{ backgroundColor: '#1e293b' }}>
+            <div className="rounded-lg border border-gray-200 overflow-hidden mb-6" style={{ backgroundColor: '#f8fafb' }}>
               {[
-                { label: 'EIN Exists',     value: irs.ein_exists ? 'Yes' : 'No' },
-                { label: 'Active Status',  value: irs.active_status },
-                { label: '990 Filing',     value: irs.filing_990 ? 'On record' : 'Not found' },
-                { label: 'NTEE Code',      value: irs.ntee_code },
-                { label: 'Ruling Date',    value: irs.ruling_date },
+                { label: 'EIN Exists',    value: irs.ein_exists ? 'Yes' : 'No' },
+                { label: 'Active Status', value: irs.active_status },
+                { label: '990 Filing',    value: irs.filing_990 ? 'On record' : 'Not found' },
+                { label: 'NTEE Code',     value: irs.ntee_code },
+                { label: 'Ruling Date',   value: irs.ruling_date },
               ].map((row, i) => (
                 <div
                   key={i}
-                  className="flex justify-between items-center px-4 py-3 border-b border-white/5 last:border-0"
+                  className="flex justify-between items-center px-4 py-3 border-b border-gray-200 last:border-0"
                 >
-                  <span className="text-gray-400 text-sm">{row.label}</span>
-                  <span className="text-white text-sm font-medium">{row.value ?? '—'}</span>
+                  <span className="text-gray-500 text-sm">{row.label}</span>
+                  <span className="text-gray-800 text-sm font-medium">{row.value ?? '—'}</span>
                 </div>
               ))}
             </div>
@@ -70,11 +70,11 @@ export default function VerifiedDrawer({ submission, onClose }) {
               {submission.signals.map((s, i) => (
                 <div
                   key={i}
-                  className="flex justify-between items-center p-3 rounded-lg border border-white/5"
-                  style={{ backgroundColor: '#1e293b' }}
+                  className="flex justify-between items-center p-3 rounded-lg border border-gray-200"
+                  style={{ backgroundColor: '#f8fafb' }}
                 >
-                  <span className="text-gray-300 text-sm">{s.flag}</span>
-                  <span className="text-green-400 text-xs font-bold ml-4 shrink-0">
+                  <span className="text-gray-600 text-sm">{s.flag}</span>
+                  <span className="text-xs font-bold ml-4 shrink-0" style={{ color: '#1bc5a4' }}>
                     +{s.risk_points} risk
                   </span>
                 </div>
@@ -84,9 +84,12 @@ export default function VerifiedDrawer({ submission, onClose }) {
         )}
 
         {!submission.signals?.length && (
-          <div className="flex items-center gap-2 p-3 rounded-lg border border-green-500/20" style={{ backgroundColor: '#0d2818' }}>
-            <span className="text-green-400 text-sm">✓</span>
-            <span className="text-green-300 text-sm">No fraud signals raised</span>
+          <div
+            className="flex items-center gap-2 p-3 rounded-lg border"
+            style={{ backgroundColor: '#e6faf7', borderColor: '#9de8d8' }}
+          >
+            <span className="text-sm" style={{ color: '#1bc5a4' }}>✓</span>
+            <span className="text-sm" style={{ color: '#1bc5a4' }}>No fraud signals raised</span>
           </div>
         )}
       </div>

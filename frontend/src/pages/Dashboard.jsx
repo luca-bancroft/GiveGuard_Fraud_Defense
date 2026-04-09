@@ -45,38 +45,40 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-10">
-      <div className="flex items-center gap-2 mb-1">
-        <i className="fa-solid fa-shield text-green-400 text-2xl"></i>
-        <h1 className="text-2xl font-bold text-white">GiveGuard</h1>
-      </div>
-      <p className="text-gray-400 text-sm mb-8">Nonprofit Fraud Defense</p>
-
-      <MetricCards submissions={submissions} />
-      <EINSubmitBar onSubmit={handleSubmit} loading={loading} />
-
-      {error && (
-        <div className="mb-4 px-4 py-3 rounded-lg border border-red-500/30 text-red-400 text-sm" style={{ backgroundColor: '#1a0a0a' }}>
-          {error}
-        </div>
-      )}
-
-      {/* Mobile tab bar sits above table */}
-      <div className="md:hidden">
-        <Sidebar active={activePage} onChange={page => { setActivePage(page); setSelected(null) }} />
+    <div className="min-h-screen" style={{ backgroundColor: '#f8fafb' }}>
+      {/* Navbar */}
+      <div className="w-full px-8 py-4 flex items-center gap-3" style={{ backgroundColor: '#0f4c75' }}>
+        <i className="fa-solid fa-shield" style={{ color: '#1bc5a4', fontSize: '1.4rem' }}></i>
+        <h1 className="text-xl font-bold text-white">GiveGuard</h1>
+        <span className="text-white/40 text-sm ml-2">Fintech Fraud Intelligence</span>
       </div>
 
-      <div className="flex gap-5 items-start">
-        {/* Desktop sidebar */}
-        <div className="hidden md:block">
+      <div className="max-w-7xl mx-auto px-6 py-8">
+        <MetricCards submissions={submissions} />
+        <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider mb-2">Verify entity</p>
+        <EINSubmitBar onSubmit={handleSubmit} loading={loading} />
+
+        {error && (
+          <div className="mb-4 px-4 py-3 rounded-lg border text-red-600 text-sm" style={{ backgroundColor: '#fff5f5', borderColor: '#feb2b2' }}>
+            {error}
+          </div>
+        )}
+
+        <div className="md:hidden">
           <Sidebar active={activePage} onChange={page => { setActivePage(page); setSelected(null) }} />
         </div>
 
-        <div className="flex-1 min-w-0">
-          <SubmissionTable submissions={visible} onSelect={setSelected} />
-        </div>
+        <div className="flex gap-5 items-start">
+          <div className="hidden md:block">
+            <Sidebar active={activePage} onChange={page => { setActivePage(page); setSelected(null) }} />
+          </div>
 
-        <DetailPanel submission={selected} onClose={() => setSelected(null)} />
+          <div className="flex-1 min-w-0">
+            <SubmissionTable submissions={visible} onSelect={setSelected} />
+          </div>
+
+          <DetailPanel submission={selected} onClose={() => setSelected(null)} />
+        </div>
       </div>
     </div>
   )

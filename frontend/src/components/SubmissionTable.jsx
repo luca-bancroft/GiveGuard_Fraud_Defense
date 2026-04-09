@@ -2,15 +2,15 @@ import VerdictBadge from './VerdictBadge.jsx'
 
 export default function SubmissionTable({ submissions, onSelect }) {
   return (
-    <div className="rounded-xl border border-white/10 overflow-hidden">
+    <div className="rounded-xl border border-gray-200 overflow-hidden" style={{ backgroundColor: '#ffffff' }}>
       <table className="w-full text-sm">
         <thead>
-          <tr className="border-b border-white/10" style={{ backgroundColor: '#0f172a' }}>
-            <th className="text-left text-gray-400 font-medium px-5 py-3">EIN</th>
-            <th className="text-left text-gray-400 font-medium px-5 py-3">Organization</th>
-            <th className="text-left text-gray-400 font-medium px-5 py-3">Trust Score</th>
-            <th className="text-left text-gray-400 font-medium px-5 py-3">Verdict</th>
-            <th className="text-left text-gray-400 font-medium px-5 py-3">Top Flag</th>
+          <tr style={{ backgroundColor: '#f8fafb', borderBottom: '1px solid #e2e8f0' }}>
+            <th className="text-left text-gray-500 font-medium px-5 py-3">EIN</th>
+            <th className="text-left text-gray-500 font-medium px-5 py-3">Organization</th>
+            <th className="text-left text-gray-500 font-medium px-5 py-3">Trust Score</th>
+            <th className="text-left text-gray-500 font-medium px-5 py-3">Verdict</th>
+            <th className="text-left text-gray-500 font-medium px-5 py-3">Top Flag</th>
           </tr>
         </thead>
         <tbody>
@@ -18,15 +18,15 @@ export default function SubmissionTable({ submissions, onSelect }) {
             <tr
               key={i}
               onClick={() => onSelect(s)}
-              className="border-b border-white/5 transition-colors cursor-pointer hover:bg-white/5"
+              className="transition-colors cursor-pointer hover:bg-gray-50"
+              style={{ borderBottom: '1px solid #e2e8f0' }}
             >
-              <td className="px-5 py-4 text-gray-400 font-mono text-xs">{s.ein}</td>
-              <td className="px-5 py-4 text-white">{s.org_name}</td>
+              <td className="px-5 py-4 text-gray-500 text-xs" style={{ fontFamily: 'monospace' }}>{s.ein}</td>
+              <td className="px-5 py-4 text-gray-800 font-medium">{s.org_name}</td>
               <td className="px-5 py-4">
-                <span className={`font-bold ${
-                  s.trust_score >= 75 ? 'text-green-400' :
-                  s.trust_score >= 40 ? 'text-yellow-400' : 'text-red-400'
-                }`}>
+                <span className="font-bold" style={{
+                  color: s.trust_score >= 75 ? '#1bc5a4' : s.trust_score >= 40 ? '#d97706' : '#ef4444'
+                }}>
                   {s.trust_score}
                 </span>
               </td>
@@ -34,7 +34,7 @@ export default function SubmissionTable({ submissions, onSelect }) {
                 <VerdictBadge verdict={s.verdict} />
               </td>
               <td className="px-5 py-4 text-gray-400 text-xs">
-                {s.top_flag ?? <span className="text-gray-600">—</span>}
+                {s.top_flag ?? <span className="text-gray-300">—</span>}
               </td>
             </tr>
           ))}

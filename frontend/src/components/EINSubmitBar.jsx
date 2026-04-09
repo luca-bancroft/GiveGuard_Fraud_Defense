@@ -21,14 +21,15 @@ export default function EINSubmitBar({ onSubmit, loading }) {
         value={ein}
         onChange={e => setEin(e.target.value)}
         onKeyDown={handleKeyDown}
-        placeholder="Enter nonprofit EIN (e.g. 12-3456789)..."
-        className="flex-1 rounded-lg px-4 py-3 text-sm text-white placeholder-gray-500 border border-white/10 outline-none focus:border-white/30"
-        style={{ backgroundColor: '#0f172a' }}
+        placeholder="Enter entity EIN or organization name..."
+        className="flex-1 rounded-lg px-4 py-3 text-sm placeholder-gray-400 border border-gray-200 outline-none focus:border-gray-400"
+        style={{ backgroundColor: '#ffffff', color: '#1a202c', fontFamily: 'monospace' }}
       />
       <button
         onClick={handleSubmit}
         disabled={loading || !ein.trim()}
-        className="px-6 py-3 rounded-lg text-sm font-semibold bg-green-600 hover:bg-green-500 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="px-6 py-3 rounded-lg text-sm font-semibold text-white disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        style={{ backgroundColor: loading || !ein.trim() ? '#0f4c75aa' : '#0f4c75' }}
       >
         {loading ? 'Verifying...' : 'Verify →'}
       </button>
