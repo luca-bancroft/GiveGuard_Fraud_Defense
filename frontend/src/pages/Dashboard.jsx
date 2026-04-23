@@ -50,7 +50,7 @@ export default function Dashboard() {
       <div className="w-full px-8 py-4 flex items-center gap-3" style={{ backgroundColor: '#0f4c75' }}>
         <i className="fa-solid fa-shield" style={{ color: '#1bc5a4', fontSize: '1.4rem' }}></i>
         <h1 className="text-xl font-bold text-white">GiveGuard</h1>
-        <span className="text-white/40 text-sm ml-2">Fintech Fraud Intelligence</span>
+        <span className="text-white/40 text-sm ml-2">Fraud Intelligence</span>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 py-8">

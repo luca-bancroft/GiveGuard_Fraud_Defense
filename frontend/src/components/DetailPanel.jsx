@@ -121,9 +121,22 @@ export default function DetailPanel({ submission, onClose }) {
           </span>
         </div>
       )}
+
+      {submission.ai_explanation && (
+        <>
+          <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider mt-5 mb-2">
+            AI Analysis
+          </p>
+          <div
+            className="p-3 rounded-lg border border-gray-200 text-xs text-gray-600 leading-relaxed"
+            style={{ backgroundColor: '#f8fafb' }}
+          >
+            {submission.ai_explanation}
+          </div>
+        </>
+      )}
     </div>
   )
-
   return (
     <>
       {/* Desktop */}
